@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="ItemStockDetailsDataBinding">
+
+        <variable
+            name="details"
+            type="com.devashish.machinetest.model.StockDetailsModel" />
+
+        <variable
+            name="listener"
+            type="com.devashish.machinetest.adapter.StockAdapter.OnItemClickListener" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> listener.onItemClicked(details,position)}"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@{details.name}" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:gravity="start"
+            android:text="@{String.valueOf(details.volume)}" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="start"
+            app:lastRate="@{details.lastRate}"
+            app:lastTradePrice="@{details.lastTradePrice}" />
+
+    </LinearLayout>
+
+</layout>
